@@ -1,0 +1,62 @@
+baseURL = 'https://tamara-art.cz/'
+title = 'Tamara Wortnerová'
+theme = 'tamara'
+
+defaultContentLanguage = 'cs'
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.cs]
+    languageCode = 'cs'
+    languageName = 'CZ'
+    weight = 1
+    title = 'Tamara Wortnerová'
+
+    [[languages.cs.menus.main]]
+      name = 'Kresby'
+      pageRef = '/drawings'
+      weight = 1
+    [[languages.cs.menus.main]]
+      name = 'Malby'
+      pageRef = '/paintings'
+      weight = 2
+    [[languages.cs.menus.main]]
+      name = 'O mně'
+      pageRef = '/about'
+      weight = 3
+    [[languages.cs.menus.main]]
+      name = 'Kontakty'
+      pageRef = '/contacts'
+      weight = 4
+
+  [languages.en]
+    languageCode = 'en'
+    languageName = 'EN'
+    weight = 2
+    title = 'Tamara Wortnerová'
+
+    [[languages.en.menus.main]]
+      name = 'Drawings'
+      pageRef = '/drawings'
+      weight = 1
+    [[languages.en.menus.main]]
+      name = 'Paintings'
+      pageRef = '/paintings'
+      weight = 2
+    [[languages.en.menus.main]]
+      name = 'About Me'
+      pageRef = '/about'
+      weight = 3
+    [[languages.en.menus.main]]
+      name = 'Contacts'
+      pageRef = '/contacts'
+      weight = 4
+
+[params]
+  facebook = 'https://www.facebook.com/tamara.wortnerova'
+  instagram = 'https://www.instagram.com/tamara_wortnerova/'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

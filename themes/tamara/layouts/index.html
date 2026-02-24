@@ -1,0 +1,8 @@
+{{ define "main" }}
+<div class="home-image">
+  {{ with .Params.image }}
+    <img src="{{ . }}" alt="{{ $.Site.Title }}">
+  {{ end }}
+</div>
+{{ .Content }}
+{{ end }}

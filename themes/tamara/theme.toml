@@ -1,0 +1,6 @@
+name = "Tamara"
+license = "MIT"
+description = "Custom theme for tamara-art.cz"
+
+[author]
+  name = "Tamara Wortnerová"
