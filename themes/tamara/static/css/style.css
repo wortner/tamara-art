@@ -211,11 +211,22 @@ img {
   opacity: 1;
 }
 
+.lightbox-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .lightbox-overlay img {
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
-  cursor: default;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
 }
 
 .lightbox-close {
@@ -234,6 +245,7 @@ img {
 .lightbox-close:hover {
   color: #ccc;
 }
+
 
 /* About & Contacts */
 .content p {
