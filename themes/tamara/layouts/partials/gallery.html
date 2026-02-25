@@ -1,4 +1,5 @@
 {{ $folder := .folder }}
+{{ $lang := .lang }}
 {{ $images := resources.Match (printf "images/%s/*" $folder) }}
 <div class="gallery">
   {{ range sort $images "Name" }}
@@ -6,10 +7,16 @@
       {{ $oriented := .Filter images.AutoOrient }}
       {{ $thumb := $oriented.Resize "1400x webp q80" }}
       {{ $full := $oriented.Resize "2400x webp q85" }}
+      {{ $baseName := path.BaseName .Name }}
+      {{ $captionPath := printf "images/%s/%s.%s.md" $folder $baseName $lang }}
+      {{ $caption := resources.Get $captionPath }}
       <div class="gallery-item">
         <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
-          <img src="{{ $thumb.RelPermalink }}" alt="{{ path.BaseName .Name }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+          <img src="{{ $thumb.RelPermalink }}" alt="{{ $baseName }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
         </a>
+        {{ with $caption }}
+          <div class="gallery-caption">{{ .Content | markdownify }}</div>
+        {{ end }}
       </div>
     {{ end }}
   {{ end }}

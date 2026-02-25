@@ -1,5 +1,5 @@
 {{ define "main" }}
 <h2>{{ .Title }}</h2>
 {{ .Content }}
-{{ partial "gallery.html" (dict "folder" "drawings") }}
+{{ partial "gallery.html" (dict "folder" "drawings" "lang" .Lang) }}
 {{ end }}
