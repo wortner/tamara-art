@@ -188,6 +188,53 @@ img {
   max-width: 700px;
 }
 
+/* Lightbox */
+.lightbox-trigger {
+  cursor: zoom-in;
+  display: block;
+}
+
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+}
+
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: #fff;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1001;
+}
+
+.lightbox-close:hover {
+  color: #ccc;
+}
+
 /* About & Contacts */
 .content p {
   max-width: 600px;

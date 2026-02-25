@@ -1,6 +1,9 @@
 {{ define "main" }}
 <div class="home-image">
-  <img src="{{ "images/hero.png" | relURL }}" alt="{{ .Site.Title }}">
+  {{ $hero := resources.Get "images/hero.png" }}
+  {{ $hero = $hero.Filter images.AutoOrient }}
+  {{ $heroProcessed := $hero.Resize "1400x webp q80" }}
+  <img src="{{ $heroProcessed.RelPermalink }}" alt="{{ .Site.Title }}" width="{{ $heroProcessed.Width }}" height="{{ $heroProcessed.Height }}">
 </div>
 {{ .Content }}
 {{ end }}

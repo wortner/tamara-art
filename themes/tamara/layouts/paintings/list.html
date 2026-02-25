@@ -1,15 +1,5 @@
 {{ define "main" }}
 <h2>{{ .Title }}</h2>
 {{ .Content }}
-<div class="gallery">
-  {{ $folder := "images/paintings" }}
-  {{ $files := sort (readDir (printf "static/%s" $folder)) "Name" }}
-  {{ range $files }}
-    {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".jpeg") (strings.HasSuffix .Name ".png") (strings.HasSuffix .Name ".webp") }}
-      <div class="gallery-item">
-        <img src="{{ printf "%s/%s" $folder .Name | relURL }}" alt="{{ .Name }}" loading="lazy">
-      </div>
-    {{ end }}
-  {{ end }}
-</div>
+{{ partial "gallery.html" (dict "folder" "paintings") }}
 {{ end }}

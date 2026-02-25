@@ -1,0 +1,16 @@
+{{ $folder := .folder }}
+{{ $images := resources.Match (printf "images/%s/*" $folder) }}
+<div class="gallery">
+  {{ range sort $images "Name" }}
+    {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".jpeg") (strings.HasSuffix .Name ".png") (strings.HasSuffix .Name ".webp") }}
+      {{ $oriented := .Filter images.AutoOrient }}
+      {{ $thumb := $oriented.Resize "1400x webp q80" }}
+      {{ $full := $oriented.Resize "2400x webp q85" }}
+      <div class="gallery-item">
+        <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
+          <img src="{{ $thumb.RelPermalink }}" alt="{{ path.BaseName .Name }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+        </a>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>

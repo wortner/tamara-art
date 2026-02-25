@@ -1,1 +1,9 @@
-<img src="{{ strings.TrimPrefix "/" .Destination | relURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{ $path := strings.TrimPrefix "/" .Destination }}
+{{ $img := resources.Get $path }}
+{{ if $img }}
+  {{ $img = $img.Filter images.AutoOrient }}
+  {{ $processed := $img.Resize "600x webp q80" }}
+  <img src="{{ $processed.RelPermalink }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" width="{{ $processed.Width }}" height="{{ $processed.Height }}">
+{{ else }}
+  <img src="{{ $path | relURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{ end }}
