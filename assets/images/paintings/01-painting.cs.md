@@ -1,1 +1,1 @@
-*Malba I*, 2023
+*Malba I*, 2022<br>(olej na plátně)

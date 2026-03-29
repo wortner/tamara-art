@@ -1,3 +1,3 @@
 ---
-title: "Drawings"
+title: "Drawing/Watercolor"
 ---

@@ -1,1 +1,1 @@
-*Painting II*, 2023
+*Painting II*, 2023<br>(acrylic)

@@ -1,1 +1,1 @@
-*Painting III*, 2024
+*Painting III*, 2024<br>(oil on canvas)

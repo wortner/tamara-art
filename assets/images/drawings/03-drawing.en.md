@@ -1,1 +1,0 @@
-*Drawing III*, 2024

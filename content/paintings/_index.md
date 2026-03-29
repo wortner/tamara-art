@@ -1,3 +1,3 @@
 ---
-title: "Malby"
+title: "Malba"
 ---

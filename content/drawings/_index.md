@@ -1,3 +1,3 @@
 ---
-title: "Kresby"
+title: "Kresba/Akvarel"
 ---

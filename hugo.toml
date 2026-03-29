@@ -13,25 +13,29 @@ defaultContentLanguageInSubdir = false
     title = 'Tamara Wortnerová'
 
     [[languages.cs.menus.main]]
-      name = 'Cyklus o vodě'
-      pageRef = '/water-cycle'
+      name = 'Kresba/Akvarel'
+      pageRef = '/drawings'
       weight = 1
     [[languages.cs.menus.main]]
-      name = 'Kresby'
-      pageRef = '/drawings'
+      name = 'Malba'
+      pageRef = '/paintings'
       weight = 2
     [[languages.cs.menus.main]]
-      name = 'Malby'
-      pageRef = '/paintings'
+      name = 'Cyklus o vodě'
+      pageRef = '/water-cycle'
       weight = 3
+    [[languages.cs.menus.main]]
+      name = 'Cyklus siluety'
+      pageRef = '/silhouettes'
+      weight = 4
     [[languages.cs.menus.main]]
       name = 'O mně'
       pageRef = '/about'
-      weight = 4
+      weight = 5
     [[languages.cs.menus.main]]
       name = 'Kontakty'
       pageRef = '/contacts'
-      weight = 5
+      weight = 6
 
   [languages.en]
     languageCode = 'en'
@@ -40,25 +44,29 @@ defaultContentLanguageInSubdir = false
     title = 'Tamara Wortnerová'
 
     [[languages.en.menus.main]]
-      name = 'Water Cycle Series'
-      pageRef = '/water-cycle'
-      weight = 1
-    [[languages.en.menus.main]]
-      name = 'Drawings'
+      name = 'Drawing/Watercolor'
       pageRef = '/drawings'
-      weight = 2
+      weight = 1
     [[languages.en.menus.main]]
       name = 'Paintings'
       pageRef = '/paintings'
+      weight = 2
+    [[languages.en.menus.main]]
+      name = 'Water Cycle Series'
+      pageRef = '/water-cycle'
       weight = 3
+    [[languages.en.menus.main]]
+      name = 'Silhouettes Series'
+      pageRef = '/silhouettes'
+      weight = 4
     [[languages.en.menus.main]]
       name = 'About Me'
       pageRef = '/about'
-      weight = 4
+      weight = 5
     [[languages.en.menus.main]]
       name = 'Contacts'
       pageRef = '/contacts'
-      weight = 5
+      weight = 6
 
 [params]
   facebook = 'https://www.facebook.com/tamara.wortnerova'
