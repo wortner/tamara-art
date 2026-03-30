@@ -10,9 +10,11 @@
       {{ $baseName := path.BaseName .Name }}
       {{ $captionPath := printf "images/%s/%s.%s.md" $folder $baseName $lang }}
       {{ $caption := resources.Get $captionPath }}
+      {{ $altText := $baseName }}
+      {{ with $caption }}{{ $altText = .Content | plainify | truncate 100 }}{{ end }}
       <div class="gallery-item">
         <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
-          <img src="{{ $thumb.RelPermalink }}" alt="{{ $baseName }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+          <img src="{{ $thumb.RelPermalink }}" alt="{{ $altText }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
         </a>
         {{ with $caption }}
           <div class="gallery-caption">{{ .Content | markdownify }}</div>

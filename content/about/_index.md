@@ -1,5 +1,7 @@
 ---
+lastmod: 2026-03-30
 title: "O mně"
+description: "Tamara Wortnerová – výtvarnice, fyzioterapeutka a kraniosakrální terapeutka z Českých Budějovic."
 ---
 
 ![Tamara Wortnerová](/images/tamara.jpg)

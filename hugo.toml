@@ -69,6 +69,8 @@ defaultContentLanguageInSubdir = false
       weight = 6
 
 [params]
+  description = 'Tamara Wortnerová – výtvarnice, fyzioterapeutka a kraniosakrální terapeutka. Kresby, malby a obrazové cykly.'
+  image = 'images/hero.png'
   facebook = 'https://www.facebook.com/tamara.wortnerova'
   instagram = 'https://www.instagram.com/tamara_wortnerova/'
 

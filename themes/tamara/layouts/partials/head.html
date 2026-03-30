@@ -1,7 +1,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+
+{{/* Meta description */}}
+{{ $description := "" }}
+{{ if .Params.description }}
+  {{ $description = .Params.description }}
+{{ else if .IsHome }}
+  {{ $description = .Site.Params.description }}
+{{ else if .Summary }}
+  {{ $description = .Summary | plainify | truncate 160 }}
+{{ else }}
+  {{ $description = .Site.Params.description }}
+{{ end }}
+{{ with $description }}<meta name="description" content="{{ . }}">{{ end }}
+
+{{/* Canonical URL */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* Hreflang for language alternates */}}
+{{ if .IsTranslated }}
+  {{ range .Translations }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{ end }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ end }}
+
+{{/* Open Graph */}}
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with $description }}<meta property="og:description" content="{{ . }}">{{ end }}
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.Language.Lang }}">
+{{ if .Params.image }}
+  {{ $ogImg := resources.Get .Params.image }}
+  {{ with $ogImg }}
+    {{ $resized := .Resize "1200x webp q80" }}
+    <meta property="og:image" content="{{ $resized.Permalink }}">
+    <meta property="og:image:width" content="{{ $resized.Width }}">
+    <meta property="og:image:height" content="{{ $resized.Height }}">
+  {{ end }}
+{{ else if .Site.Params.image }}
+  {{ $ogImg := resources.Get .Site.Params.image }}
+  {{ with $ogImg }}
+    {{ $resized := .Resize "1200x webp q80" }}
+    <meta property="og:image" content="{{ $resized.Permalink }}">
+    <meta property="og:image:width" content="{{ $resized.Width }}">
+    <meta property="og:image:height" content="{{ $resized.Height }}">
+  {{ end }}
+{{ end }}
+
+{{/* Twitter Card */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+{{ with $description }}<meta name="twitter:description" content="{{ . }}">{{ end }}
+
+{{/* Author */}}
+<meta name="author" content="Tamara Wortnerová">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+
+{{/* JSON-LD Structured Data */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tamara Wortnerová",
+  "url": "{{ .Site.BaseURL }}",
+  "jobTitle": "{{ if eq .Site.Language.Lang "cs" }}Výtvarnice a kraniosakrální terapeutka{{ else }}Artist and Craniosacral Therapist{{ end }}",
+  "sameAs": [
+    "{{ .Site.Params.facebook }}",
+    "{{ .Site.Params.instagram }}"
+  ]
+}
+</script>
+{{ else if eq .Section "paintings" "drawings" "water-cycle" "silhouettes" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ .Title }}",
+  "url": "{{ .Permalink }}",
+  "author": {
+    "@type": "Person",
+    "name": "Tamara Wortnerová"
+  }
+}
+</script>
+{{ end }}

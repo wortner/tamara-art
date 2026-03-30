@@ -1,5 +1,7 @@
 ---
+lastmod: 2026-03-30
 title: "About Me"
+description: "Tamara Wortnerová – artist, physiotherapist and craniosacral therapist from České Budějovice."
 ---
 
 ![Tamara Wortnerová](/images/tamara.jpg)
