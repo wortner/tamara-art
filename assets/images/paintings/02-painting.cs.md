@@ -1,1 +1,1 @@
-*Malba VI*, 2025<br>(olej na plátně)
+*Šaty Loie Fuller*, 2025<br>(olej na plátně)

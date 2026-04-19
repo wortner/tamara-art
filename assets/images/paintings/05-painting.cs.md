@@ -1,1 +1,1 @@
-*Malba III*, 2024<br>(olej na plátně)
+*Slunce*, 2024<br>(olej na plátně)

@@ -1,1 +1,1 @@
-*Malba V*, 2025<br>(olej na plátně)
+*Perličky na dně*, 2025<br>(olej na plátně)

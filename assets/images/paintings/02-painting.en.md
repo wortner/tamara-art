@@ -1,1 +1,1 @@
-*Painting VI*, 2025<br>(oil on canvas)
+*Loie Fuller's Dress*, 2025<br>(oil on canvas)

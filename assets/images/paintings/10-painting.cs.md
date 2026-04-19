@@ -1,1 +1,1 @@
-*Malba II*, 2023<br>(akryl)
+*Strom*, 2023<br>(akryl)

@@ -1,1 +1,1 @@
-*Painting V*, 2025<br>(oil on canvas)
+*Pearls at the Bottom*, 2025<br>(oil on canvas)

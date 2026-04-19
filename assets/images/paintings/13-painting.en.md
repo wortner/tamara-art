@@ -1,1 +1,1 @@
-*Painting I*, 2022<br>(oil on canvas)
+*Depths*, 2022<br>(oil on canvas)

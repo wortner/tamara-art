@@ -1,1 +1,1 @@
-*Malba IV*, 2024<br>(olej na plátně)
+*Světluška*, 2024<br>(olej na plátně)
