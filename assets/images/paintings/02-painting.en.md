@@ -1,1 +1,1 @@
-*Painting II*, 2023<br>(acrylic)
+*Painting VI*, 2025<br>(oil on canvas)

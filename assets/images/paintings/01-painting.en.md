@@ -1,1 +1,1 @@
-*Painting I*, 2022<br>(oil on canvas)
+*Painting V*, 2025<br>(oil on canvas)

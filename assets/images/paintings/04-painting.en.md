@@ -1,1 +1,0 @@
-*Painting IV*, 2024<br>(oil on canvas)

@@ -1,1 +1,1 @@
-*Malba VI*, 2025<br>(olej na plátně)
+*Malba IV*, 2024<br>(olej na plátně)
