@@ -1,0 +1,1 @@
+*Naděje*, 2022<br>(olej na plátně)
