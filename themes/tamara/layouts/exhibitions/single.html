@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="exhibition">
+  <h2>{{ .Title }}</h2>
+  {{ with .Params.period }}<p class="exhibition-period">{{ . }}</p>{{ end }}
+  {{ with .Params.location }}<p class="exhibition-location">{{ . }}</p>{{ end }}
+  {{ with .Params.poster }}
+    {{ with resources.Get . }}
+      {{ $poster := (.Filter images.AutoOrient).Resize "1000x webp q85" }}
+      <img class="exhibition-poster" src="{{ $poster.RelPermalink }}" alt="{{ $.Title }}" loading="lazy" width="{{ $poster.Width }}" height="{{ $poster.Height }}">
+    {{ end }}
+  {{ end }}
+  {{ .Content }}
+  {{ with .Params.photos }}
+    {{ partial "gallery.html" (dict "folder" . "lang" $.Lang) }}
+  {{ end }}
+</article>
+{{ end }}

@@ -29,13 +29,17 @@ defaultContentLanguageInSubdir = false
       pageRef = '/silhouettes'
       weight = 4
     [[languages.cs.menus.main]]
+      name = 'Výstavy'
+      pageRef = '/exhibitions'
+      weight = 5
+    [[languages.cs.menus.main]]
       name = 'O mně'
       pageRef = '/about'
-      weight = 5
+      weight = 6
     [[languages.cs.menus.main]]
       name = 'Kontakty'
       pageRef = '/contacts'
-      weight = 6
+      weight = 7
 
   [languages.en]
     languageCode = 'en'
@@ -60,13 +64,17 @@ defaultContentLanguageInSubdir = false
       pageRef = '/silhouettes'
       weight = 4
     [[languages.en.menus.main]]
+      name = 'Exhibitions'
+      pageRef = '/exhibitions'
+      weight = 5
+    [[languages.en.menus.main]]
       name = 'About Me'
       pageRef = '/about'
-      weight = 5
+      weight = 6
     [[languages.en.menus.main]]
       name = 'Contacts'
       pageRef = '/contacts'
-      weight = 6
+      weight = 7
 
 [params]
   description = 'Tamara Wortnerová – výtvarnice, fyzioterapeutka a kraniosakrální terapeutka. Kresby, malby a obrazové cykly.'
