@@ -1,25 +1,40 @@
 {{ $folder := .folder }}
 {{ $lang := .lang }}
 {{ $images := resources.Match (printf "images/%s/*" $folder) }}
-<div class="gallery">
-  {{ range sort $images "Name" }}
-    {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".jpeg") (strings.HasSuffix .Name ".png") (strings.HasSuffix .Name ".webp") }}
-      {{ $oriented := .Filter images.AutoOrient }}
-      {{ $thumb := $oriented.Resize "1400x webp q80" }}
-      {{ $full := $oriented.Resize "2400x webp q85" }}
-      {{ $baseName := path.BaseName .Name }}
-      {{ $captionPath := printf "images/%s/%s.%s.md" $folder $baseName $lang }}
-      {{ $caption := resources.Get $captionPath }}
-      {{ $altText := $baseName }}
-      {{ with $caption }}{{ $altText = .Content | plainify | truncate 100 }}{{ end }}
-      <div class="gallery-item">
-        <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
-          <img src="{{ $thumb.RelPermalink }}" alt="{{ $altText }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
-        </a>
-        {{ with $caption }}
-          <div class="gallery-caption">{{ .Content | markdownify }}</div>
-        {{ end }}
-      </div>
+
+{{/* Build a list of renderable images with the year parsed from their caption,
+     keeping filename order so same-year items stay stably ordered. */}}
+{{ $items := slice }}
+{{ range sort $images "Name" }}
+  {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".jpeg") (strings.HasSuffix .Name ".png") (strings.HasSuffix .Name ".webp") }}
+    {{ $baseName := path.BaseName .Name }}
+    {{ $captionPath := printf "images/%s/%s.%s.md" $folder $baseName $lang }}
+    {{ $caption := resources.Get $captionPath }}
+    {{ $year := 0 }}
+    {{ with $caption }}
+      {{ with findRE "[0-9]{4}" .Content 1 }}
+        {{ $year = (index . 0) | int }}
+      {{ end }}
     {{ end }}
+    {{ $items = $items | append (dict "img" . "caption" $caption "base" $baseName "year" $year) }}
+  {{ end }}
+{{ end }}
+
+<div class="gallery">
+  {{ range sort $items "year" "desc" }}
+    {{ $oriented := .img.Filter images.AutoOrient }}
+    {{ $thumb := $oriented.Resize "1400x webp q80" }}
+    {{ $full := $oriented.Resize "2400x webp q85" }}
+    {{ $caption := .caption }}
+    {{ $altText := .base }}
+    {{ with $caption }}{{ $altText = .Content | plainify | truncate 100 }}{{ end }}
+    <div class="gallery-item">
+      <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $altText }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+      </a>
+      {{ with $caption }}
+        <div class="gallery-caption">{{ .Content | markdownify }}</div>
+      {{ end }}
+    </div>
   {{ end }}
 </div>

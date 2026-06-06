@@ -1,0 +1,1 @@
+*Růže*, 2024<br>(olej na plátně)
