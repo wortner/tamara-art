@@ -1,0 +1,1 @@
+*Vlakem*, 2024<br>(olej na plátně)
