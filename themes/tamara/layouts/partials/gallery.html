@@ -21,16 +21,16 @@
 {{ end }}
 
 <div class="gallery">
-  {{ range sort $items "year" "desc" }}
-    {{ $oriented := .img.Filter images.AutoOrient }}
+  {{ range $i, $e := sort $items "year" "desc" }}
+    {{ $oriented := $e.img.Filter images.AutoOrient }}
     {{ $thumb := $oriented.Resize "1400x webp q80" }}
     {{ $full := $oriented.Resize "2400x webp q85" }}
-    {{ $caption := .caption }}
-    {{ $altText := .base }}
+    {{ $caption := $e.caption }}
+    {{ $altText := $e.base }}
     {{ with $caption }}{{ $altText = .Content | plainify | truncate 100 }}{{ end }}
     <div class="gallery-item">
       <a href="{{ $full.RelPermalink }}" class="lightbox-trigger">
-        <img src="{{ $thumb.RelPermalink }}" alt="{{ $altText }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $altText }}" {{ if eq $i 0 }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
       </a>
       {{ with $caption }}
         <div class="gallery-caption">{{ .Content | markdownify }}</div>

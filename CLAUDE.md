@@ -20,11 +20,14 @@ There are no tests, linters, or npm/build tooling — Hugo is the entire toolcha
 ## Architecture
 
 ### Galleries are image-driven, not content-driven
-Each gallery section (`drawings`, `paintings`, `water-cycle`, `silhouettes`) has a `content/<section>/_index.md` + `_index.en.md` that hold **only the title/description/intro text**. The actual images come from `assets/images/<folder>/`, scanned at build time by `themes/tamara/layouts/partials/gallery.html` via `resources.Match`. **To add/remove artwork you add/remove image files in `assets/images/`, not markdown in `content/`.**
+Each gallery section (`drawings`, `paintings`, `water-cycle`, `silhouettes`) has a `content/<section>/_index.md` + `_index.en.md` that hold **only the title/description/intro text**. The actual images come from `assets/images/<folder>/`, scanned at build time by `themes/tamara/layouts/partials/gallery.html` via `resources.Match`. **To add/remove artwork you add/remove image files in `assets/images/`, not markdown in `content/`.** (Exhibitions are the exception — see below.)
 
-- Images render sorted by filename, so the `NN-` numeric prefix (`01-drawing.jpg`) controls gallery order.
-- Each image may have sibling caption files `NN-name.cs.md` and `NN-name.en.md` in the same folder. The gallery partial picks the one matching the page language; caption text also becomes the image `alt`. Caption files are often empty — that's fine.
-- The partial generates a responsive WebP thumbnail (`1400x`) + full-size (`2400x`) and wires a lightbox.
+- **Gallery order is year-driven, not filename-driven.** The partial parses a 4-digit year (first `[0-9]{4}` match) out of each image's caption file and sorts images by year **descending**. The `NN-` filename prefix (`01-drawing.jpg`) only breaks ties among images of the same year (or those with no parsed year, which default to `0` and sort last). To change ordering, edit the year in the caption — renaming files alone won't reorder across years.
+- Each image may have sibling caption files `NN-name.cs.md` and `NN-name.en.md` in the same folder. The gallery partial picks the one matching the page language; caption text also becomes the image `alt`. Caption files are often empty — that's fine (an empty caption yields year `0`).
+- The partial generates a responsive WebP thumbnail (`1400x`) + full-size (`2400x`) and wires a lightbox. The first image gets `loading="eager"` + `fetchpriority="high"`; the rest are lazy-loaded.
+
+### Exhibitions are the one content-driven section
+`content/exhibitions/` breaks the image-driven pattern: each exhibition is its own markdown page (`<slug>.md` + `<slug>.en.md`) with frontmatter `title`, `date`, `period`, `location`, `poster` (a resource path), and optional `photos` (an image-folder name). `themes/tamara/layouts/exhibitions/list.html` renders one `<article>` per page via `.Pages.ByDate.Reverse`, and when `photos` is set it **reuses `gallery.html`** to embed that folder. So the gallery partial serves both plain gallery sections and exhibition photo sets.
 
 ### Section → image-folder mapping has a naming mismatch
 Each section gets its own layout `themes/tamara/layouts/<section>/list.html`, which calls the gallery partial with an explicit folder name. **Note `water-cycle` (URL/section) maps to the `water_cycle` (underscore) image folder.** When adding a section, create both the content dir and a matching `layouts/<section>/list.html` passing the correct `folder`.

@@ -5,6 +5,9 @@ theme = 'tamara'
 defaultContentLanguage = 'cs'
 defaultContentLanguageInSubdir = false
 
+# Publish future-dated content (e.g. upcoming exhibitions announced before their date).
+buildFuture = true
+
 [languages]
   [languages.cs]
     languageCode = 'cs'
