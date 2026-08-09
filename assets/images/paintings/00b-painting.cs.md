@@ -1,1 +1,1 @@
-*Vítr*, 2026<br>(olej na plátně)
+*Červenka*, 2026<br>(olej na plátně)

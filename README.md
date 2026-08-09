@@ -68,7 +68,7 @@ Site available at http://localhost:1313/
 - `content/drawings/` — Kresba/Akvarel gallery
 - `content/paintings/` — Malba gallery
 - `content/water-cycle/` — Cyklus o vode gallery
-- `content/silhouettes/` — Cyklus siluety (coming soon)
+- `content/silhouettes/` — Strážci/průvodci gallery
 - `content/about/` — About page
 - `content/contacts/` — Contacts page
 

@@ -1,1 +1,1 @@
-*Mrak*, 2026<br>(olej na plátně)
+*Srdce*, 2026<br>(olej na plátně)

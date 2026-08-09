@@ -28,7 +28,7 @@ buildFuture = true
       pageRef = '/water-cycle'
       weight = 3
     [[languages.cs.menus.main]]
-      name = 'Cyklus siluety'
+      name = 'Strážci/průvodci'
       pageRef = '/silhouettes'
       weight = 4
     [[languages.cs.menus.main]]
@@ -63,7 +63,7 @@ buildFuture = true
       pageRef = '/water-cycle'
       weight = 3
     [[languages.en.menus.main]]
-      name = 'Silhouettes Series'
+      name = 'Guardians/Guides'
       pageRef = '/silhouettes'
       weight = 4
     [[languages.en.menus.main]]

@@ -17,6 +17,16 @@
       document.querySelector('.sidebar-nav').classList.toggle('open');
     });
 
+    document.querySelectorAll('.exhibition-text-toggle').forEach(function(toggle) {
+      var wrap = toggle.closest('.exhibition-text');
+      var lessLabel = toggle.getAttribute('data-less') || toggle.textContent;
+      var moreLabel = toggle.textContent;
+      toggle.addEventListener('click', function() {
+        var expanded = wrap.classList.toggle('expanded');
+        toggle.textContent = expanded ? lessLabel : moreLabel;
+      });
+    });
+
     (function() {
       var triggers = document.querySelectorAll('.lightbox-trigger');
       if (!triggers.length) return;

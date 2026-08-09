@@ -15,7 +15,19 @@
           <img class="exhibition-poster" src="{{ $poster.RelPermalink }}" alt="{{ $title }}" loading="lazy" width="{{ $poster.Width }}" height="{{ $poster.Height }}">
         {{ end }}
       {{ end }}
-      {{ .Content }}
+      {{ with .Content }}
+        {{ $full := . }}
+        {{ $short := $full | truncate 700 }}
+        {{ if eq $full $short }}
+          <div class="exhibition-text">{{ $full }}</div>
+        {{ else }}
+          <div class="exhibition-text">
+            <div class="exhibition-text-short">{{ $short }}</div>
+            <div class="exhibition-text-full">{{ $full }}</div>
+            <button class="exhibition-text-toggle" type="button" data-less="{{ if eq $lang "cs" }}Zobrazit méně{{ else }}Show less{{ end }}">{{ if eq $lang "cs" }}Číst více{{ else }}Read more{{ end }}</button>
+          </div>
+        {{ end }}
+      {{ end }}
       {{ with .Params.photos }}
         {{ partial "gallery.html" (dict "folder" . "lang" $lang) }}
       {{ end }}
